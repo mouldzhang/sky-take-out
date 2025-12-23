@@ -67,7 +67,8 @@ public class AutoFillAspect {
                 setUpdateTime.invoke(entity, now);
                 setUpdateUser.invoke(entity, currentId);
             } catch (Exception e) {
-
+                log.error("自动填充异常：{}", e.getMessage());
+                throw new RuntimeException("自动填充失败");
             }
         } else if (operationType == OperationType.UPDATE) {
             //为两个公共字段赋值
@@ -78,7 +79,8 @@ public class AutoFillAspect {
                 setUpdateTime.invoke(entity, now);
                 setUpdateUser.invoke(entity, currentId);
             } catch (Exception e) {
-
+                log.error("自动填充异常：{}", e.getMessage());
+                throw new RuntimeException("自动填充失败");
             }
         }
     }
